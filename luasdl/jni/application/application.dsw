@@ -1,0 +1,233 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "appconsole"=.\appconsole.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name ruby
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name rubysdl
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name sdl
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name sdl_image
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name sdl_mixer
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name sdl_ttf
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name lua
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name luasdl
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name tolua
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "application"=.\application.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name sdl
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name sdl_image
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name sdl_ttf
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name sdl_mixer
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name ruby
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name rubysdl
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "freetype"=..\freetype\freetype.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "jpeg"=..\jpeg\jpeg.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "lua"="..\lua-5.1.4\lua.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "luasdl"="..\LuaSDL-0.3.4\luasdl.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "png"=..\png\png.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name zlib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "sdl"=..\sdl\sdl.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "sdl_image"=..\sdl_image\sdl_image.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name png
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name sdl
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name jpeg
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "sdl_mixer"=..\sdl_mixer\sdl_mixer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "sdl_ttf"=..\sdl_ttf\sdl_ttf.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name freetype
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "tolua"="..\tolua++-1.0.92\tolua.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "zlib"="..\zlib-1.2.3\zlib.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

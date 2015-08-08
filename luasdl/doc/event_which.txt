@@ -1,0 +1,3 @@
+﻿tolua_variable(tolua_S,"which",tolua_get_SDL_MouseMotionEvent_unsigned_which,tolua_set_SDL_MouseMotionEvent_unsigned_which);
+   
+因为SDL_KeyboardEvent和其他鼠标事件没有使用这个字段，所以一概返回0

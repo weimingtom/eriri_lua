@@ -1,0 +1,21 @@
+Win32 Output Folder
+-------------------
+
+This folder is the primary output folder for MinGW/MSYS development.
+
+Files that should be present and not be deleted, for source
+distributions:
+* README
+* Makefile
+* luasdl.rc - resource file
+* luasdl.ico - icon file
+* __init__.lua - script that will be automatically executed
+* minifont.lua - mini message display library
+* minipath.lua - mini path processing library
+
+For binary distributions, do not delete the DLL libraries unless the
+library is one that is loaded on demand and you know you won't be using
+them.
+
+"make clean" mostly cleans up this folder.
+

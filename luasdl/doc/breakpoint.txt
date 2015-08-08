@@ -1,0 +1,20 @@
+﻿断点
+
+
+TOLUA_API void tolua_pushusertype (lua_State* L, void* value, const char* type)
+{
+ if (value == NULL)
+
+
+-----------------------
+
+
+TOLUA_API int tolua_default_collect (lua_State* tolua_S)
+{
+ const char *tname = tolua_typename(tolua_S, 1);
+ void* self = tolua_tousertype(tolua_S,1,0);
+ free(self);
+ return 0;
+}
+
+

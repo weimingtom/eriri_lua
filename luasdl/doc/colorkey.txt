@@ -1,0 +1,7 @@
+﻿被移除的colorkey
+
+http://blog.gmane.org/gmane.comp.lib.sdl/month=20091201/page=14
+
+ tolua_variable(tolua_S,"colorkey",tolua_get_SDL_PixelFormat_unsigned_colorkey,tolua_set_SDL_PixelFormat_unsigned_colorkey);
+   //tolua_variable(tolua_S,"alpha",tolua_get_SDL_PixelFormat_unsigned_alpha,tolua_set_SDL_PixelFormat_unsigned_alpha);
+  

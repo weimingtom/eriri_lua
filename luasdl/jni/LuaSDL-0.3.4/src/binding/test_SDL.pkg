@@ -1,0 +1,348 @@
+/* ================================================================== */
+/*
+ * test_SDL.pkg
+ * A primitive package to test bindings for SDL and SDL_* libraries.
+ *
+ * This file is part of LuaSDL.
+ *
+ * Author: Kein-Hong Man <khman@users.sf.net> 2007
+ */
+/* ================================================================== */
+
+/*
+    SDL - Simple DirectMedia Layer
+    Copyright (C) 1997-2006 Sam Lantinga
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+    Sam Lantinga
+    slouken@libsdl.org
+*/
+
+$#include "SDL.h"
+
+/*
+    SDL_image:  An example image loading library for use with SDL
+    Copyright (C) 1997-2006 Sam Lantinga
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+    Sam Lantinga
+    slouken@libsdl.org
+*/
+
+$#include "SDL_image.h"
+
+/*
+    SDL_mixer:  An audio mixer library based on the SDL library
+    Copyright (C) 1997-2004 Sam Lantinga
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Library General Public
+    License as published by the Free Software Foundation; either
+    version 2 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Library General Public License for more details.
+
+    You should have received a copy of the GNU Library General Public
+    License along with this library; if not, write to the Free
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+    Sam Lantinga
+    slouken@libsdl.org
+*/
+
+$#include "SDL_mixer.h"
+
+/*
+    SDL_net:  An example cross-platform network library for use with SDL
+    Copyright (C) 1997-2004 Sam Lantinga
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Library General Public
+    License as published by the Free Software Foundation; either
+    version 2 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Library General Public License for more details.
+
+    You should have received a copy of the GNU Library General Public
+    License along with this library; if not, write to the Free
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+    Sam Lantinga
+    slouken@libsdl.org
+*/
+
+$#include "SDL_net.h"
+
+/*
+    SDL_ttf:  A companion library to SDL for working with TrueType (tm) fonts
+    Copyright (C) 1997-2004 Sam Lantinga
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Library General Public
+    License as published by the Free Software Foundation; either
+    version 2 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Library General Public License for more details.
+
+    You should have received a copy of the GNU Library General Public
+    License along with this library; if not, write to the Free
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+    Sam Lantinga
+    slouken@libsdl.org
+*/
+
+$#include "SDL_ttf.h"
+
+module SDL
+{
+/* ================================================================== */
+/*
+ * Simple bindings to test SDL
+ */
+/* ================================================================== */
+
+typedef signed char     int8_t;
+typedef unsigned char   uint8_t;
+typedef signed short    int16_t;
+typedef unsigned short  uint16_t;
+typedef signed int      int32_t;
+typedef unsigned int    uint32_t;
+
+typedef int8_t		Sint8;
+typedef uint8_t		Uint8;
+typedef int16_t		Sint16;
+typedef uint16_t	Uint16;
+typedef int32_t		Sint32;
+typedef uint32_t	Uint32;
+
+/* ================================================================== */
+
+#define	SDL_INIT_TIMER		0x00000001
+#define SDL_INIT_AUDIO		0x00000010
+#define SDL_INIT_VIDEO		0x00000020
+#define SDL_INIT_CDROM		0x00000100
+#define SDL_INIT_JOYSTICK	0x00000200
+#define SDL_INIT_NOPARACHUTE	0x00100000
+#define SDL_INIT_EVENTTHREAD	0x01000000
+#define SDL_INIT_EVERYTHING	0x0000FFFF
+
+extern int SDL_Init(Uint32 flags);
+extern int SDL_InitSubSystem(Uint32 flags);
+extern void SDL_QuitSubSystem(Uint32 flags);
+extern Uint32 SDL_WasInit(Uint32 flags);
+extern void SDL_Quit(void);
+
+typedef enum {
+	SDL_ENOMEM,
+	SDL_EFREAD,
+	SDL_EFWRITE,
+	SDL_EFSEEK,
+	SDL_UNSUPPORTED,
+	SDL_LASTERROR
+} SDL_errorcode;
+
+// FIXME unsupported
+// extern void SDL_SetError(const char *fmt, ...);
+extern char * SDL_GetError(void);
+extern void SDL_ClearError(void);
+extern void SDL_Error(SDL_errorcode code);
+
+/* ================================================================== */
+
+typedef struct SDL_Rect {
+	Sint16 x, y;
+	Uint16 w, h;
+} SDL_Rect;
+
+typedef struct SDL_Color {
+	Uint8 r;
+	Uint8 g;
+	Uint8 b;
+	Uint8 unused;
+} SDL_Color;
+// #define SDL_Colour SDL_Color
+
+typedef struct SDL_Palette {
+	int       ncolors;
+	SDL_Color *colors;
+} SDL_Palette;
+
+typedef struct SDL_PixelFormat {
+	SDL_Palette *palette;
+	Uint8  BitsPerPixel;
+	Uint8  BytesPerPixel;
+	Uint8  Rloss;
+	Uint8  Gloss;
+	Uint8  Bloss;
+	Uint8  Aloss;
+	Uint8  Rshift;
+	Uint8  Gshift;
+	Uint8  Bshift;
+	Uint8  Ashift;
+	Uint32 Rmask;
+	Uint32 Gmask;
+	Uint32 Bmask;
+	Uint32 Amask;
+	Uint32 colorkey;
+	Uint8  alpha;
+} SDL_PixelFormat;
+
+typedef struct SDL_Surface {
+	Uint32 flags;				/* Read-only */
+	SDL_PixelFormat *format;		/* Read-only */
+	int w, h;				/* Read-only */
+	Uint16 pitch;				/* Read-only */
+	void *pixels;				/* Read-write */
+	SDL_Rect clip_rect;			/* Read-only */
+	Uint32 unused1;				/* for binary compatibility */
+	int refcount;				/* Read-mostly */
+} SDL_Surface;
+
+/* ================================================================== */
+
+typedef struct SDL_RWops {
+//	int (*seek)(struct SDL_RWops *context, int offset, int whence);
+//	int (*read)(struct SDL_RWops *context, void *ptr, int size, int maxnum);
+//	int (*write)(struct SDL_RWops *context, const void *ptr, int size, int num);
+//	int (*close)(struct SDL_RWops *context);
+//	Uint32 type;
+} SDL_RWops;
+
+/* ================================================================== */
+
+#define AUDIO_U8	0x0008	/* Unsigned 8-bit samples */
+#define AUDIO_S8	0x8008	/* Signed 8-bit samples */
+#define AUDIO_U16LSB	0x0010	/* Unsigned 16-bit samples */
+#define AUDIO_S16LSB	0x8010	/* Signed 16-bit samples */
+#define AUDIO_U16MSB	0x1010	/* As above, but big-endian byte order */
+#define AUDIO_S16MSB	0x9010	/* As above, but big-endian byte order */
+#define AUDIO_U16	AUDIO_U16LSB
+#define AUDIO_S16	AUDIO_S16LSB
+
+}
+
+module SDL
+{
+/* ================================================================== */
+/*
+ * Simple bindings to test SDL_image
+ */
+/* ================================================================== */
+
+#define SDL_IMAGE_MAJOR_VERSION	1
+#define SDL_IMAGE_MINOR_VERSION	2
+#define SDL_IMAGE_PATCHLEVEL	5
+
+extern SDL_Surface * IMG_LoadTyped_RW(SDL_RWops *src, int freesrc, char *type);
+extern SDL_Surface * IMG_Load(const char *file);
+extern SDL_Surface * IMG_Load_RW(SDL_RWops *src, int freesrc);
+
+}
+
+module SDL
+{
+/* ================================================================== */
+/*
+ * Simple bindings to test SDL_mixer
+ */
+/* ================================================================== */
+
+#define SDL_MIXER_MAJOR_VERSION	1
+#define SDL_MIXER_MINOR_VERSION	2
+#define SDL_MIXER_PATCHLEVEL	7
+
+#define MIX_CHANNELS	8
+#define MIX_DEFAULT_FREQUENCY	22050
+// #if SDL_BYTEORDER == SDL_LIL_ENDIAN
+#define MIX_DEFAULT_FORMAT	AUDIO_S16LSB
+// #else
+// #define MIX_DEFAULT_FORMAT	AUDIO_S16MSB
+// #endif
+#define MIX_DEFAULT_CHANNELS	2
+#define MIX_MAX_VOLUME		128	/* Volume of a chunk */
+
+extern int Mix_OpenAudio(int frequency, Uint16 format, int channels, int chunksize);
+extern void Mix_CloseAudio(void);
+
+}
+
+module SDL
+{
+/* ================================================================== */
+/*
+ * Simple bindings to test SDL_net
+ */
+/* ================================================================== */
+
+#define SDL_NET_MAJOR_VERSION	1
+#define SDL_NET_MINOR_VERSION	2
+#define SDL_NET_PATCHLEVEL	6
+
+extern int  SDLNet_Init(void);
+extern void SDLNet_Quit(void);
+
+// FIXME unsupported
+// extern void SDLNet_SetError(const char *fmt, ...);
+extern char * SDLNet_GetError(void);
+
+}
+
+module SDL
+{
+/* ================================================================== */
+/*
+ * Simple bindings to test SDL_ttf
+ */
+/* ================================================================== */
+
+#define SDL_TTF_MAJOR_VERSION	2
+#define SDL_TTF_MINOR_VERSION	0
+#define SDL_TTF_PATCHLEVEL	8
+
+extern int  TTF_Init(void);
+extern void TTF_Quit(void);
+
+// FIXME unsupported
+// extern void TTF_SetError(const char *fmt, ...);
+extern char * TTF_GetError(void);
+
+}
+
+/* ================================================================== */
+/* (end of package file) */

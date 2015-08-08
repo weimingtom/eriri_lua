@@ -1,0 +1,619 @@
+LuaSDL changelog
+----------------
+
+2007-07-30  Kein-Hong Man  <khman@users.sf.net>
+
+	* win32/Makefile: switched to DLLs for lua and tolua++
+	* README: updated
+	* version 0.3.4
+
+2007-07-25  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/orig/*: updated to new versions of SDL library header
+	files
+	* src/binding/README: added notes on header file update
+	* src/binding/SDL_config.h, SDL_image.h, SDL_mixer.h, SDL_net.h,
+	SDL_platform.h, SDL_stdinc.h, SDL_ttf.h, SDL_version.h, SDL_video.h:
+	minor updates to bindings (see README)
+	* src/sdllib.h: bumped LuaSDL_VERSION
+	* win32/luasdl.rc: bumped version numbers
+
+2007-06-11  Kein-Hong Man  <khman@users.sf.net>
+
+	* Moved project to Subversion repository
+
+2007-03-19  Kein-Hong Man  <khman@users.sf.net>
+
+	* demos/font/Tuffy.ttf, Tuffy_Bold.ttf, Tuffy_Bold_Italic.ttf,
+	Tuffy_Italic.ttf: updated with tuffy-20070126.zip (Tuffy 1.1)
+
+2007-02-20  Kein-Hong Man  <khman@users.sf.net>
+
+	* demos/misc/keyboard.lua: added key repeat test
+	* demos/misc/timer.lua: fixed SDL_Delay print to clear line
+	* demos/misc/mouse.lua: added mouse event demo
+	* demos/net/http_reflector.lua: added simple HTTP connection demo
+	* demos/net/README: updated info
+	* README: updated
+	* version 0.3.3
+
+2007-02-19  Kein-Hong Man  <khman@users.sf.net>
+
+	* demos/misc/keyboard.lua: added demo parts for SDL_GetKeyState
+	and SDL_GetModState
+
+2007-02-17  Kein-Hong Man  <khman@users.sf.net>
+
+	* win32/__init__.lua: updated list of demos
+	* demos/misc/keyboard.lua: coded keyboard event demo
+	* demos/misc/timer.lua: coded timer demo
+	* win32/__init__.lua: updated demo list, removed timer code
+	from this script
+
+2007-02-07  Kein-Hong Man  <khman@users.sf.net>
+
+	* docs/luasdl.html: added preliminary documentation material
+	* version 0.3.2
+
+2007-02-06  Kein-Hong Man  <khman@users.sf.net>
+
+	* demos/misc/directories.lua: added demo for path constants
+	* demos/misc/directories.lua: added demo of application data
+	directory creation and deletion
+	* README: added notes on application data path, UCS-2 usage
+	* win32/__init__.lua: cleaned up old test code
+
+2007-02-06  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/sdllib.c: added LuaSDL_lsdir for listing directories
+	* win32/__init__.lua: wrote test for LuaSDL_lsdir
+	* src/sdllib.c: added LuaSDL_osresult (support), LuaSDL_mkdir,
+	LuaSDL_chdir, LuaSDL_rmdir (additional functionality)
+	* win32/__init__.lua: wrote test for new directory functions
+	* src/srclib.c: added LuaSDL_DirCfg for Win32-style config paths
+	* win32/__init__.lua: tested configuration path generation
+	* README: added notes on application configuration and data paths,
+	memory management calls
+
+2007-02-06  Kein-Hong Man  <khman@users.sf.net>
+
+	* demos/misc/memory_test.lua: added memory tests to memory demo
+	* src/sdllib.c: debugged new memory allocation functions, okay now
+	* demos/misc/memory_test.lua: debugged new memory tests, works now
+	* demos/net/tcp_client_demo.lua, tcp_server_demo.lua: fixed to use
+	new memory allocation function, SDL_malloc_local
+
+2007-02-05  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/sdllib.c: wrote SDL_malloc_local to replace SDL_NewUserData
+	* src/sdllib.c: added SDL_strtomem as an alias to SDL_malloc_local
+	* src/sdllib.c: added SDL_memtostr for reverse conversion
+	* src/sdllib.c: added Uint16[] and Uint32[] data array access
+	* src/luasdl.c: added SDL_net.h in includes
+	* src/sdllib.c: fixed unused variable compilation warnings
+	* README: updated, with notes on potential application sizes
+	* version 0.3.1
+
+2007-02-05  Kein-Hong Man  <khman@users.sf.net>
+
+	* demos/net/tcp_client_demo.lua, tcp_server_demo.lua: fixed
+	memory allocation bug, works now
+	* demos/net/README: added notes on running client-server demo
+
+2007-02-04  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/SDL.pkg: added interface for IPaddress struct
+	memory management
+	* src/sdllib.c: added calls for IPaddress struct memory management
+	* src/sdllib.h: added header declarations for same
+	* demos/net/tcp_client_demo.lua: simple client skeleton
+	* demos/net/tcp_server_demo.lua: simple server skeleton
+
+2007-02-04  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/etc/Makefile: added simple Makefile for bin2c.c
+	* src/etc/SDL_ttf.c: dummy SDL_ttf library to make a small dummy
+	DLL file, for smaller Win32 binary distributions of apps
+	* src/etc/SDL_ttf-dummy.c: renamed from SDL_ttf.c
+	* src/etc/SDL_mixer-dummy.c: dummy SDL_mixer library to make a small
+	dummy DLL file, for smaller Win32 binary distributions of apps
+
+2007-01-31  Kein-Hong Man  <khman@users.sf.net>
+
+	* demo/font/font_demo.lua: removed collectgarbage call used during
+	memory behaviour testing
+	* src/binding/SDL_video.h: removed SDL_UpdateRects, implementation
+	done in sdllib.c
+	* src/sdllib.c: added _SDL_UpdateRects, special handling of param
+
+2007-01-30  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/SDL_keyboard.h: removed binding for SDL_GetKeyState
+	* src/sdllib.c: added _SDL_GetKeyState which returns Uint8[]
+	* src/sdllib.c: added get_Uint8_array and set_Uint8_array functions
+	for handling Uint8[]
+	* src/binding/SDL_video.h: noted limitation in calling SDL_UpdateRects
+	* README: updated tips section
+	* COPYRIGHT-LuaSDL: changed from COPYRIGHT so that it does not clash
+	with the copyright message an application may have, also fixed notice
+	on the relevant files
+
+2007-01-29  Kein-Hong Man  <khman@users.sf.net>
+
+	* demos/misc/memory_test.lua: added for testing memory usage
+	behaviour, look at image_demo and font_demo problems
+	* src/binding/SDL.pkg: commented out SDL_Surface memory management
+	calls, never needed in SDL
+	* src/sdllib.h: ditto
+	* src/sdllib.c: ditto
+	* demos/image/image_demo.lua: added SDL_FreeSurface to free memory
+	* demos/font/font_demo.lua: added SDL_FreeSurface to free memory
+	* CHANGES: split from README
+	* README: updated
+	* version 0.3.0
+
+2007-01-29  Kein-Hong Man  <khman@users.sf.net>
+
+	* win32/minipath.lua: added app/exe relative path composers
+	* demos/image/image_demo.lua: fixed header comments
+	* demos/font/LICENSE.txt: added Thatcher Ulrich's font license
+	* demos/font/Tuffy.ttf, Tuffy_Bold.ttf, Tuffy_Bold_Italic.ttf,
+	Tuffy_Italic.ttf: added Thatcher Ulrich's Tuffy font
+	* demos/font/font_demo.lua: wrote and tested TTF font demo
+	* demos/audio/audio_demo.lua: added helpful comments
+	* win32/__init__.lua: updated list of demos
+
+2007-01-28  Kein-Hong Man  <khman@users.sf.net>
+
+	* demos/misc/template.lua: added a skeleton script for demos
+	* demos/image/image_demo.lua: added image format reader demo
+	* win32/__init__.lua: minor tweaks to timer demo
+
+2007-01-28  Kein-Hong Man  <khman@users.sf.net>
+
+	* demos/image/README: notes on SDL_image demo
+	* demos/image/tongue.svg: original source of image files
+	* demos/image/tongue-4b-rle.bmp, tongue-8b-rle.bmp,
+	tongue-24b.bmp, tongue.gif, tongue.jpg, tongue.pcx, tongue.png,
+	tongue.tga, tongue.tif, tongue.xpm, tongue-ascii.ppm,
+	tongue-raw.ppm: sample image files for testing
+
+2007-01-28  Kein-Hong Man  <khman@users.sf.net>
+
+	* demos/audio/: renamed from demos/audio_demo/
+	* demos/misc/: renamed from demos/videoinfo
+	* tests/__init__.lua: dumped some test code here for now
+	* win32/__init__.lua: removed some old test code
+	* win32/__init__.lua: made table lookup for list of demos
+	* demos/audio/README: updated info on clips
+	* win32/__init__.lua: added entry for SDL_mixer demo
+	* demos/audio/mixer_demo.lua: adapted SDL_mixer demo from
+	audio_demo.lua, tested, basic SDL_mixer usage works
+
+2007-01-25  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/sdllib.c: updated _SDL_ListModes to use a SDL_Rect**
+	equivalent usertype, "SDL_Rect*", added get_SDL_Rect_array for
+	indexing SDL_Rect* as SDL_Rect[] equivalent
+	* win32/__init__.lua: tested new SDL_ListModes behaviour
+	* demos/videoinfo/videoinfo.lua: added option 3 to display some
+	hardware screen sizes (modes) using the SDL_ListModes call
+	* src/sdllib.c: renamed type of "SDL_Rect*" to "SDL_Rect[]" in
+	order to make array indexing usage more obvious
+	* src/sdllib.c: added get_UDPpacket_array to implement UDPpacket[]
+
+2007-01-25  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/sdllib.c: added comments
+	* src/binding/SDL_mixer.h: adjusted data struct type in Mix_Chunk,
+	added param defaults for Mix_QuerySpec, fixed Mix_QuickLoad_WAV
+	and Mix_QuickLoad_RAW (tolua++ handled Uint8* type incorrectly)
+	* src/sdllib.c: added tolua_pointer
+	* src/binding/SDL_net.h: Uint8* in UDPpacket changed to void*
+	* src/binding/SDL_keyboard.h: fixed SDL_GetKeyState param defaults
+	* src/binding/SDL_joystick.h: fixed SDL_JoystickGetBall param
+	defaults
+	* src/binding/SDL_image.h: fixed SDL_image.h param type
+	* src/binding/SDL_endian.h: disabled 64-bit functions
+	* src/binding/SDL_cdrom.h: fixed FRAMES_TO_MSF param defaults
+	* src/binding/SDL_mouse.h: Uint8* in SDL_Cursor changed to void*
+	* src/binding/SDL_mouse.h: fixed SDL_GetMouseState,
+	SDL_GetRelativeMouseState and SDL_CreateCursor params
+	* src/binding/SDL_ttf.h: fixed TTF_GlyphMetrics, TTF_SizeText,
+	TTF_SizeUTF8,TTF_SizeUNICODE param defaults
+	* src/binding/SDL_video.h: fixed pixel field in SDL_Overlay to
+	be an array to void*
+	* src/binding/README: updated binding status
+
+2007-01-24  Kein-Hong Man  <khman@users.sf.net>
+
+	* README: added alternate URL for Timidity
+	* win32/__init__.lua: added error display for loading and
+	running of demo scripts
+	* demos/audio_demo/audio_demo.lua: added third clip, added
+	code to do conversion demo
+	* src/binding/README: usage of SDL_AudioCVT verified
+	* demos/audio_demo/README: updated notes about clips
+	* README: updated
+	* version 0.2.1
+
+2007-01-23  Kein-Hong Man  <khman@users.sf.net>
+
+	* win32/minipath.lua: moved MiniPath to separate module here,
+	refined, added SetApp
+	* win32/minifont.lua: changed into object-stype calls
+	* win32/__init__.lua: changed MiniFont calls
+	* demos/audio_demo/audio_demo.lua: changed MiniFont calls
+	* demos/videoinfo/videoinfo.lua: changed MiniFont calls
+
+2007-01-23  Kein-Hong Man  <khman@users.sf.net>
+
+	* demos/audio_demo/Apollo_11_landing.wav, Apollo_11_quip.wav:
+	added non-copyrighted audio samples for an audio demo script
+	* demos/audio_demo/README: added NASA attribution, notes
+	* win32/minifont.lua: split off from __init__.lua as a standard
+	module
+	* win32/__init__.lua: adjusted to use minifont as a module
+	* demos/audio_demo/audio_demo.lua: coded audio demo
+	* demos/videoinfo/videoinfo.lua: coded videoinfo demo
+	* demos/audio_demo/audio_demo.lua: fixes for more graceful
+	failure messages
+	* win32/__init__.lua: wrote MiniPath_new factory
+
+2007-01-22  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/SDL_audio.h: adjusted interface for WAV
+	file loading functions
+	* src/sdllib.h: added prototypes for WAV file loaders' wrappers
+	* src/sdllib.c: added wrapper functions, _SDL_LoadWAV_RW and
+	_SDL_LoadWAV, avoiding casting warnings in gcc
+	* win32/__init__.lua: added WAV loading test
+	* src/binding/SDL_audio.h: type of callback in SDL_AudioSpec
+	changed to void*
+	* src/binding/SDL.pkg: added interface for supplementary calls
+	to set audio samples
+	* src/sdllib.h: added prototypes for supplementary calls to
+	set audio samples
+	* src/sdllib.c: added a callback service for audio, 2 channels
+	* win32/__init__.lua: fixed faulty calling of error()
+	* src/sdllib.c: fixed bug in mixin() for loop==0
+	* win32/__init__.lua: wrote and tested basic audio support
+	* src/binding/README: updated notes on implementation status
+
+2007-01-22  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/SDL_timer.h: implemented timer add/remove
+	* src/sdllib.h: added prototype for _SDL_AddTimer
+	* src/sdllib.c: implemented _SDL_AddTimer and a simple
+	callback, LuaSDL_NewTimerCallback
+	* win32/__init__.lua: added test code for timer callback
+	* src/binding/SDL.pkg: added notes on API call replaced
+
+2007-01-20  Kein-Hong Man  <khman@users.sf.net>
+
+	* demos/meteor_shower/meteor_shower.lua: minor optimizations
+	using local storage, still some slowdown during huge collisions
+
+2007-01-20  Kein-Hong Man  <khman@users.sf.net>
+
+	* win32/__init__.lua: cleaned up default display a bit, added
+	code to call Meteor Shower as a demo
+	* README: added notes on memory management
+	* version 0.2.0
+
+2007-01-19  Kein-Hong Man  <khman@users.sf.net>
+
+	* demos/meteor_shower/README.txt, ast3.bmp, d1.bmp, d4.bmp,
+	d7.bmp, gameover.bmp, particle.bmp, ast1.bmp, cursor.bmp, d2.bmp,
+	d5.bmp, d8.bmp, icon.bmp, saucer.bmp, ast2.bmp, d0.bmp, d3.bmp,
+	d6.bmp, d9.bmp: copied from Thatcher Ulrich's LuaSDL codebase
+	* demos/meteor_shower/meteor_shower.lua: ported from Thatcher
+	Ulrich's LuaSDL Lua 4 codebase, debugged and run successfully
+
+2007-01-19  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/SDL_video.h: moved SDL_Rect constructor/destructor
+	* src/sdllib.c: new SDL_Rect constructor/destructor, added local
+	constructor for SDL_Rect
+	* src/binding/SDL.pkg: new location of binding for SDL_Rect
+	constructor/destructor
+	* win32/__init__.lua: added test for SDL_Rect_local, added test
+	for wrapping explicit constructor/destructor calls for debugging
+	* src/binding/SDL_version.h, SDL_mouse.h, SDL_keyboard.h,
+	SDL_events.h, SDL_cdrom.h, SDL_audio.h: moved constructors and
+	destructors
+	* src/binding/SDL.pkg: new location of all constructor/destructor
+	bindings
+	* src/sdllib.c: added local version of all constructors
+	* src/binding/README: added notes on object creation/deletion
+
+2007-01-18  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/luasdl.c: fixed dir_exe path, removed executable filename
+	* src/binding/SDL.pkg: removed version information
+	* src/sdllib.h: put version information here
+	* src/sdllib.c: added call to set LuaSDL version, changed its
+	name in the SDL module to LuaSDL_Version
+	* win32/__init__.lua: fixed use of leading in mini font library,
+	adjusted message window size, adjusted wrapping
+	* version 0.1.2
+
+2007-01-17  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/luasdl.c: added directory processing functions, added
+	code to generate absolute script path
+	* src/sdllib.h: updated LuaSDL_StartInfo struct
+	* src/sdllib.c: added tolua_sconstant to push strings to module
+	* win32/__init__.lua: added code to test absolute paths
+	* README: added What's New, information on startup
+
+2007-01-17  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/sdllib.h: added LuaSDL startup info struct
+	* src/luasdl.c: added proper get_absolute_paths function
+	* src/sdllib.c: added SDL.LuaSDL_Dir* constant strings
+	* win32/__init__.lua: added code to print absolute path strings
+	* src/sdllib.*: standardized lua_State variables to 'L'
+	* src/luasdl.c: added function process_args for command line
+	argument processing
+	* win32/__init__.lua: added code to test argument passing
+
+2007-01-17  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/sdllib.c: added SDL_NewUserData function for testing
+	userdata behaviour
+	* src/sdllib.c: sdllib_font pointer changed to a light userdata
+	and name in Lua changed to SDL.LuaSDL_FontBasic
+	* src/binding/SDL.pkg: removed function wrapper for sdllib_font
+	* src/DejaVu-Sans-Mono-13.c: made sdllib_font a constant pointer
+	* win32/__init__.lua: added code to test userdata behaviour
+	* src/luasdl.c: added tests to get absolute paths
+
+2007-01-16  Kein-Hong Man  <khman@users.sf.net>
+
+	* COPYING-SDL: added license for SDL, SDL_* libraries
+	* README-SDL.txt: added notice pointing to COPYING-SDL
+	* README-SDL_image.txt: added notice pointing to COPYING-SDL
+	* README-SDL_mixer.txt: added notice pointing to COPYING-SDL
+	* README-SDL_net.txt: added notice pointing to COPYING-SDL
+	* README-SDL_ttf.txt: added notice pointing to COPYING-SDL
+	* docs/README-SDL.txt: moved from root
+	* docs/README-SDL_image.txt: moved from root
+	* docs/README-SDL_mixer.txt: moved from root
+	* docs/README-SDL_net.txt: moved from root
+	* docs/README-SDL_ttf.txt: moved from root
+	* docs/COPYING-Ogg-Vorbis: added for Ogg and Vorbis libraries
+	* docs/COPYING-SDL: added for SDL and SDL_* libraries
+	* docs/COPYING-SMPEG: added for SMPEG library
+	* docs/COPYRIGHT-Lua5: added for Lua 5
+	* docs/COPYRIGHT-TIFF: added for libtiff
+	* docs/FTL.TXT: added for FreeType 2
+	* docs/license-mikmod.txt: added for Mikmod
+	* docs/LICENSE-PNG: added for libpng
+	* docs/README-JPEG: added for JPEG library
+	* docs/README-Timidity: added for Timidity
+	* docs/README-tolua++: added for tolua++
+	* docs/README-zlib: added for zlib
+	* README: updated license information of various libraries, added
+	attribution notices for FreeType 2 and JPEG libraries
+
+2007-01-16  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/DejaVu-Sans-Mono-13.xcf: replaces DejaVu-Sans-Mono-12.xcf
+	* src/DejaVu-Sans-Mono-13.bmp: replaces DejaVu-Sans-Mono-12.bmp,
+	glyphs are now boxed in properly
+	* src/DejaVu-Sans-Mono-13.c: replaces DejaVu-Sans-Mono-12.c
+	* win32/__init__.lua: fixed MiniFont's Clear, Print now wraps
+	if line is overlong, added border, added test for Clear
+
+2007-01-15  Kein-Hong Man  <khman@users.sf.net>
+
+	* win32/__init__.lua: wrote code to demo mini font
+	* version 0.1.1
+
+2007-01-15  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/SDL.pkg: added SDL_LuaSDL_Font_BMP entry
+	* src/binding/SDL_video.h: added more struct create/delete
+	* src/sdllib.c, sdllib.h: added SDL_LuaSDL_Font_BMP entry
+	* win32/__init__.lua: tested loading and blitting of font
+	* win32/luasdl.rc: added Win32 resource file, contains standard
+	application information only
+	* win32/luasdl.ico: created place holder icon for Win32
+	* win32/README: updated notes
+	* README: updated todo and progress
+
+2007-01-15  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/luasdl.c: changed standard startup filename to __init__.lua
+	* win32/__init__.lua: renamed from luasdl.lua
+	* src/DejaVu-Sans-Mono-12.xcf: The GIMP source file for minimal
+	display font
+	* src/DejaVu-Sans-Mono-12.bmp: minimal display font
+	* src/README: added notes for DejaVu-Sans-Mono-12.bmp creation
+	* src/etc/bin2c.c: copied over from Lua 5.0.3.
+	* src/etc/README: added notes on bin2c.c
+	* src/DejaVu-Sans-Mono-12.c: generated and edited
+
+2007-01-14  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/SDL_version.h: simplified macro bindings,
+	wrapping a function around macros not necessary
+	* src/binding/SDL_video.h: binding for macros SDL_LoadBMP and
+	SDL_SaveBMP was incorrect, fixed
+	* src/binding/SDL_video.h, SDL_ttf.h, SDL_stdinc.h, SDL_rwops.h,
+	SDL_quit.h, SDL_net.h, SDL_mixer.h, SDL_image.h, SDL_endian.h:
+	simplified macro bindings
+	* src/binding/SDL_events.h: disabled SDL_EventFilter elements
+	* win32/Makefile: fixed -DTOLUA_RELEASE for release flags
+
+2007-01-13  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/README: updated for first public release
+	* README: updated for first public release
+	* version 0.1.0
+
+2007-01-13  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/sdllib.c: implemented _SDL_ListModes for SDL_ListModes
+	* src/sdllib.h: added API calls for get and put pixel
+	* src/sdllib.c: implemented get and put pixel calls
+	* win32/Makefile: added sdllib.h to build process
+	* src/binding/SDL.pkg: added interface definitions for get
+	and put pixel, added version information setting
+	* win32/luasdl.lua: tested listing modes and drawing pixels
+
+2007-01-12  Kein-Hong Man  <khman@users.sf.net>
+
+	* win32/Makefile: added MYSDLLIBS variable for user libraries
+	* src/binding/README: updated with notes on status of binding
+	* src/binding/SDL_keysym.h: changed initialization of constants
+	* src/binding/SDL_keysym_alt.h: kept as older version
+
+2007-01-10  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/sdllib.c: changed to wrap SDL_bind.c, now main entry
+	point for LuaSDL library, all compiled and Bool|Not tested.
+	* src/luasdl.c: changed library init call to point to sdllib.c
+	* win32/Makefile: updated build process with sdllib.c
+	* src/luasdl.lua: removed, to avoid confusion of multiple copies
+	* win32/luasdl.lua: added preliminary tests for sdllib.c stuff
+
+2007-01-10  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/sdllib.c: added bit manipulation functions, bool(), and(),
+	or(), not(), xor(), lshift(), rshift()
+	* src/sdllib.c: implemented SDL_RWFromFP(), allows Lua file
+	handles to be used in call
+	* src/binding/orig/SDL_config_win32.h: bugfixed header file,
+	for MinGW SDL 1.2.11, required a HAVE_STRDUP define
+	* src/binding/SDL_stdinc.h: debugged interfaces of most standard
+	calls, successful compilation
+
+2007-01-09  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/SDL_config_win32.h: cleaned of iconv stuff (which
+	were moved back to platform-independent SDL_stdinc.h)
+	* src/binding/SDL_stdinc.h: added interfaces for SDL versions of
+	standard function library calls
+	* src/sdllib.c: added tolua++-style library initialization code
+
+2007-01-08  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/SDL_video.h, SDL_audio.h, SDL_mouse.h, SDL_net.h:
+	changed pointers in structs to void *, implemented a few more
+	functions whose ** data type works with tolua++
+	* src/binding/README: updated with status interface information
+	* README: updated with TODO information
+
+2007-01-08  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/SDL_events.h, SDL_keyboard.h, SDL_mouse.h,
+	SDL_version.h, SDL_video.h: added creation/deletion for some
+	structures
+	* src/luasdl.lua: tested SDL_VideoInfo, SDL_PixelFormat,
+	tested screen mode set and simple event loop, works
+	* src/binding/SDL_events.h: fixed struct definition for
+	SDL_SysWMEvent, complete now
+	* src/binding/SDL_audio.h, SDL_cdrom.h: added creation/deletion
+	for some structures
+
+2007-01-07  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/SDL_version.h: added creation/deletion, tested
+
+2007-01-07  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/SDL_events.h, SDL_video.h: package files done,
+	passed compilation with some items disabled at present
+	* src/binding/SDL_net.h: package files partly done, passed
+	compilation with many items disabled at present
+	* src/binding/SDL_net.h: fixed typing errors, most calls
+	compiles correctly
+
+2007-01-05  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/SDL_config_win32.h, SDL_endian.h: rework
+	LE/BE swap functions to make them platform-independent
+	* src/binding/SDL_audio.h, SDL_mixer.h, SDL_timer.h:
+	package files completed, some passed compilation with some
+	items disabled at present
+
+2007-01-05  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/SDL_cdrom.h, SDL_rwops.h: package files
+	completed, some passed tolua++ compilation
+	* src/sdllib.c: created, for holding additional functionality
+	* src/binding/SDL_image.h, SDL_ttf.h, SDL_mouse.h: package
+	files completed, some passed tolua++ compilation
+
+2007-01-05  Kein-Hong Man  <khman@users.sf.net>
+
+	* win32/Makefile: added dependendies for SDL.pkg
+	* src/binding/SDL_active.h, SDL_endian.h, SDL_joystick.h,
+	SDL_keyboard.h, SDL_keysym.h, SDL_quit.h, SDL_version.h:
+	package files completed, some passed tolua++ compilation
+
+2007-01-05  Kein-Hong Man  <khman@users.sf.net>
+
+	* win32/Makefile: made tolua++ start in same directory as
+	the main package file, otherwise including files fail
+	* src/binding/orig: switched to better SDL_config.h copied
+	from SVN sources for SDL-1.2
+	* src/binding/README: added notes on interface package
+	* src/binding/SDL.pkg: created wrapper for package files
+	* src/binding/SDL.h, SDL_config.h, SDL_config_win32.h,
+	SDL_cpuinfo.h, SDL_error.h, SDL_platform.h, SDL_stdinc.h:
+	package files completed, passed tolua++ compilation
+
+2007-01-04  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/test_SDL.pkg: added copyright and license
+	notices from original header files, for completeness
+	* src/binding/README: added dev notes, and notes on header
+	file licensing and library usage
+	* win32/Makefile: added debug and release flag options
+
+2007-01-04  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/binding/test_SDL.pkg: added minimum interfaces for
+	SDL_* libraries, for testing
+	* src/test_binding.lua: added initialization tests for
+	SDL_* libraries
+	* src/test_binding.c: fork, to keep as a simple binding test
+	* win32/Makefile: updated for new test
+	* src/test_binding.lua: updated test script, public domain
+	* src/test_binding.c, src/test_linkage.c: set to public domain
+	* win32/README: added some information on usage etc.
+
+2007-01-04  Kein-Hong Man  <khman@users.sf.net>
+
+	* win32/: moved from src/win32/, better separation
+	* win32/Makefile: moved from src/, adjusted paths
+	* src/binding/: renamed from src/tolua++/
+	* src/binding/test_SDL.pkg: test binding package, added minimum
+	of interface elements
+	* src/autogen/: created to place autogenerated sources
+	* src/test_binding.lua: script run by luasdl executable,
+	initializes SDL in Lua
+	* src/luasdl.c: rewrite for Lua/tolua++ startup, works
+
+2007-01-04  Kein-Hong Man  <khman@users.sf.net>
+
+	* src/tolua++/: moved from tolua++/, keep sources in one place
+	* src/win32/: created, for Win32-specific stuff like rc files
+	* src/luasdl.c: added tolua++ linkage test
+	* src/test_linkage.c: fork, to keep as a simple link test
+	* src/Makefile: added compilation of test programs
+	* COPYRIGHT: added Lua 5-style MIT license
+
+2007-01-04  Kein-Hong Man  <khman@users.sf.net>
+
+	* project started
+	* tolua++/: created, made snapshot of SDL header files as orig/
+	* tolua++/README: added SDL libraries version information
+	* src/: created
+	* src/Makefile: added preliminary Makefile draft
+	* src/luasdl.c: added skeleton that links to all the relevant
+	libraries, successfully compiled and executed
+

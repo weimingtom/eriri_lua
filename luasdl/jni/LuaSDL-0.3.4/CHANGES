@@ -1,0 +1,64 @@
+WHAT'S NEW
+==========
+
+The following are the major changes for each release:
+
+0.3.4	* Updated SDL binding from 1.2.11 to 1.2.12
+	* Updated SDL_image binding from 1.2.5 to 1.2.6
+	* Updated SDL_mixer binding from 1.2.7 to 1.2.8
+	* Updated SDL_net binding from 1.2.6 to 1.2.7
+	* Updated SDL_ttf binding from 2.0.8 to 2.0.9
+	* Updated Tuffy fonts to Tuffy 1.1 (tuffy-20070126.zip)
+	* Win32 binaries now uses dynamic linking where possible
+
+0.3.3	* Keyboard event demo, shows key state and modifiers
+	* Timer demo, exercising most timer function calls
+	* Mouse event demo, for mouse motion and button events
+	* Simple HTTP demo, reflects header data back to client
+
+0.3.2	* SDL_malloc_local, SDL_strtomem, SDL_memtostr works now
+	* Added directory manipulation functions (ls, ch, mk, rm)
+	* Added SDL.LuaSDL_DirCfg for Win32-style config paths
+	* Directories demo, application data directory handling
+	* Some preliminary documentation for LuaSDL facilities
+	* An sfont-luasdl port completed
+
+0.3.1	* An aliens-luasdl port completed
+	* Dummy SDL_ttf, for smaller Win32 binary distributions
+	* Dummy SDL_mixer, for smaller Win32 binary distributions
+	* Added a SDL_net TCP connection demo
+	* New memory management functions: SDL_malloc_local,
+	  SDL_strtomem, SDL_memtostr
+	* Access to data arrays: "Uint8[]", "Uint16[]", "Uint32[]"
+
+0.3.0	* Added parameter defaults for many calls
+	* Mixer demo, using multiple channels and an OGG clip
+	* Image loader demo, tests many different file formats
+	* TTF font demo, using the SDL_ttf library
+
+0.2.1	* Added a simplified version of the interval timer
+	* Implemented interfaces for SDL_audio.h WAV usage
+	* Audio demo, 2-channel audio output and conversion demo
+	* Video demo, displays video surface parameters
+	* Created mini message display library
+	* Created mini path processing library
+
+0.2.0	* Functions to create Lua-managed 'local' struct objects
+	* Ported over Thatcher Ulrich's Meteor Shower demo game
+
+0.1.2	* New 8x14 ASCII font, glyph alignment issues fixed
+	* Added license information for all linked libraries
+	* Added path processing for finding main script to run
+	* Added program arguments for main Lua script
+	* Win32 absolute paths in Lua for finding programs and data
+
+0.1.1	* Binding code simplified
+	* A basic 7x13 ASCII font available for message display
+	* Win32 program information in resource file
+	* Win32 icon placeholder, official icon to be done later
+	* A simple message display library
+
+0.1.0	* Basic bindings done, incomplete, in flux
+	* Win32 executable links to the targeted libraries
+	* Win32 executable loads a single script with a fixed name
+	* A simple script works

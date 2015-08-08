@@ -1,0 +1,80 @@
+08-08 18:07:40.306: W/ResourceType(514): Failure getting entry for 0x7f090009 (t=8 e=9) in package 0 (error -75)
+08-08 18:07:40.341: W/ResourceType(840): Failure getting entry for 0x7f090002 (t=8 e=2) in package 0 (error -75)
+08-08 18:07:40.341: W/ResourceType(2197): Failure getting entry for 0x7f090003 (t=8 e=3) in package 0 (error -75)
+08-08 18:07:40.357: W/ResourceType(1620): Failure getting entry for 0x7f080000 (t=7 e=0) in package 0 (error -75)
+08-08 18:07:40.358: W/ResourceType(840): Failure getting entry for 0x7f080000 (t=7 e=0) in package 0 (error -75)
+08-08 18:07:40.374: W/ResourceType(2006): Failure getting entry for 0x7f070000 (t=6 e=0) in package 0 (error -75)
+08-08 18:07:40.382: W/ResourceType(636): Failure getting entry for 0x7f090009 (t=8 e=9) in package 0 (error -75)
+08-08 18:07:40.401: W/ResourceType(706): Failure getting entry for 0x7f090004 (t=8 e=4) in package 0 (error -75)
+08-08 18:07:40.411: W/SurfaceFlinger(130): [Layer::activeBufferBackup] mActiveBuffer=0x0 not initialized
+08-08 18:07:40.416: W/ResourceType(1465): Failure getting entry for 0x7f0a0002 (t=9 e=2) in package 0 (error -75)
+08-08 18:07:40.417: W/MediatekClassFactory(514): Exception: java.lang.NoSuchMethodException
+08-08 18:07:40.484: W/ResourceType(1568): Failure getting entry for 0x7f0c0002 (t=11 e=2) in package 0 (error -75)
+08-08 18:07:40.487: W/ResourceType(2019): Failure getting entry for 0x7f090008 (t=8 e=8) in package 0 (error -75)
+08-08 18:07:40.489: W/ResourceType(1012): Failure getting entry for 0x7f080000 (t=7 e=0) in package 0 (error -75)
+08-08 18:07:40.496: W/ResourceType(1635): Failure getting entry for 0x7f0a0020 (t=9 e=32) in package 0 (error -75)
+08-08 18:07:40.505: W/ResourceType(1246): Failure getting entry for 0x7f080000 (t=7 e=0) in package 0 (error -75)
+08-08 18:07:40.514: E/AudioService(514): handleConfigurationChanged() createInstance IAudioServiceExt fail
+08-08 18:07:40.514: E/AudioService(514): java.lang.RuntimeException
+08-08 18:07:40.514: E/AudioService(514): 	at com.mediatek.common.MediatekClassFactory.createInstance(MediatekClassFactory.java:490)
+08-08 18:07:40.514: E/AudioService(514): 	at android.media.AudioService.handleConfigurationChanged(AudioService.java:6037)
+08-08 18:07:40.514: E/AudioService(514): 	at android.media.AudioService.access$8500(AudioService.java:113)
+08-08 18:07:40.514: E/AudioService(514): 	at android.media.AudioService$AudioServiceBroadcastReceiver.onReceive(AudioService.java:4197)
+08-08 18:07:40.514: E/AudioService(514): 	at android.app.LoadedApk$ReceiverDispatcher$Args.run(LoadedApk.java:791)
+08-08 18:07:40.514: E/AudioService(514): 	at android.os.Handler.handleCallback(Handler.java:725)
+08-08 18:07:40.514: E/AudioService(514): 	at android.os.Handler.dispatchMessage(Handler.java:92)
+08-08 18:07:40.514: E/AudioService(514): 	at android.os.Looper.loop(Looper.java:153)
+08-08 18:07:40.514: E/AudioService(514): 	at com.android.server.ServerThread.run(SystemServer.java:1267)
+08-08 18:07:40.532: W/PhoneGlobals(764): updateProximitySensorMode: lock already released.
+08-08 18:07:40.601: W/dalvikvm(2375): No implementation found for native Ljp/ogapee/onscripter/ONScripter;.nativeGetWidth:()I
+08-08 18:07:40.601: W/dalvikvm(2375): threadid=1: thread exiting with uncaught exception (group=0x419b79a8)
+08-08 18:07:40.602: E/AndroidRuntime(2375): FATAL EXCEPTION: main
+08-08 18:07:40.602: E/AndroidRuntime(2375): java.lang.UnsatisfiedLinkError: Native method not found: jp.ogapee.onscripter.ONScripter.nativeGetWidth:()I
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at jp.ogapee.onscripter.ONScripter.nativeGetWidth(Native Method)
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at jp.ogapee.onscripter.ONScripter.runSDLApp(ONScripter.java:301)
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at jp.ogapee.onscripter.ONScripter.onCreate(ONScripter.java:484)
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at android.app.Activity.performCreate(Activity.java:5222)
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1081)
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2297)
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2385)
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at android.app.ActivityThread.access$600(ActivityThread.java:157)
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1341)
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at android.os.Looper.loop(Looper.java:153)
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at android.app.ActivityThread.main(ActivityThread.java:5326)
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at java.lang.reflect.Method.invokeNative(Native Method)
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at java.lang.reflect.Method.invoke(Method.java:511)
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:848)
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:615)
+08-08 18:07:40.602: E/AndroidRuntime(2375): 	at dalvik.system.NativeStart.main(Native Method)
+08-08 18:07:40.606: W/ActivityManager(514):   Force finishing activity com.iteye.weimingtom.luasdl/jp.ogapee.onscripter.ONScripter
+08-08 18:07:41.313: W/AES(514): Exception Log handling...
+08-08 18:07:41.336: W/ResourceType(2006): Failure getting entry for 0x7f070000 (t=6 e=0) in package 0 (error -75)
+08-08 18:07:41.338: W/ResourceType(636): Failure getting entry for 0x7f090009 (t=8 e=9) in package 0 (error -75)
+08-08 18:07:41.341: W/ResourceType(706): Failure getting entry for 0x7f090004 (t=8 e=4) in package 0 (error -75)
+08-08 18:07:41.342: W/ResourceType(1465): Failure getting entry for 0x7f0a0002 (t=9 e=2) in package 0 (error -75)
+08-08 18:07:41.343: W/ResourceType(1620): Failure getting entry for 0x7f080000 (t=7 e=0) in package 0 (error -75)
+08-08 18:07:41.343: W/ResourceType(2197): Failure getting entry for 0x7f090003 (t=8 e=3) in package 0 (error -75)
+08-08 18:07:41.345: W/ADB_SERVICES(160): terminating JDWP 2375 connection: Try again
+08-08 18:07:41.346: W/PhoneGlobals(764): updateProximitySensorMode: lock already released.
+08-08 18:07:41.356: W/ProcessStats(514): Skipping unknown process pid 2375
+08-08 18:07:41.364: W/MediatekClassFactory(514): Exception: java.lang.NoSuchMethodException
+08-08 18:07:41.366: E/AudioService(514): handleConfigurationChanged() createInstance IAudioServiceExt fail
+08-08 18:07:41.366: E/AudioService(514): java.lang.RuntimeException
+08-08 18:07:41.366: E/AudioService(514): 	at com.mediatek.common.MediatekClassFactory.createInstance(MediatekClassFactory.java:490)
+08-08 18:07:41.366: E/AudioService(514): 	at android.media.AudioService.handleConfigurationChanged(AudioService.java:6037)
+08-08 18:07:41.366: E/AudioService(514): 	at android.media.AudioService.access$8500(AudioService.java:113)
+08-08 18:07:41.366: E/AudioService(514): 	at android.media.AudioService$AudioServiceBroadcastReceiver.onReceive(AudioService.java:4197)
+08-08 18:07:41.366: E/AudioService(514): 	at android.app.LoadedApk$ReceiverDispatcher$Args.run(LoadedApk.java:791)
+08-08 18:07:41.366: E/AudioService(514): 	at android.os.Handler.handleCallback(Handler.java:725)
+08-08 18:07:41.366: E/AudioService(514): 	at android.os.Handler.dispatchMessage(Handler.java:92)
+08-08 18:07:41.366: E/AudioService(514): 	at android.os.Looper.loop(Looper.java:153)
+08-08 18:07:41.366: E/AudioService(514): 	at com.android.server.ServerThread.run(SystemServer.java:1267)
+08-08 18:07:41.368: W/ResourceType(1246): Failure getting entry for 0x7f080000 (t=7 e=0) in package 0 (error -75)
+08-08 18:07:41.372: W/ResourceType(1012): Failure getting entry for 0x7f080000 (t=7 e=0) in package 0 (error -75)
+08-08 18:07:41.377: W/ResourceType(1568): Failure getting entry for 0x7f0c0002 (t=11 e=2) in package 0 (error -75)
+08-08 18:07:41.379: W/ResourceType(2019): Failure getting entry for 0x7f090008 (t=8 e=8) in package 0 (error -75)
+08-08 18:07:41.386: W/ResourceType(1635): Failure getting entry for 0x7f0a0020 (t=9 e=32) in package 0 (error -75)
+08-08 18:07:42.203: W/ResourceType(840): Failure getting entry for 0x7f090002 (t=8 e=2) in package 0 (error -75)
+08-08 18:07:42.204: W/ResourceType(840): Failure getting entry for 0x7f080000 (t=7 e=0) in package 0 (error -75)
+08-08 18:07:42.217: W/WindowManager(514): No new IME target

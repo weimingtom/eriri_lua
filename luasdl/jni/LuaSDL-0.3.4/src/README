@@ -1,0 +1,23 @@
+Various Notes
+-------------
+
+Notes on DejaVu-Sans-Mono-13.{xcf|bmp}
+--------------------------------------
+
+This is a primitive bitmap font to display helpful messages on LuaSDL,
+avoiding the need for non-expert users to look for stdout.txt and
+stderr.txt. Thus, if LuaSDL works, but there is a problem with the
+program script, a message can be displayed.
+
+Created using The GIMP, using 13 point DejaVu Sans Mono. The result on
+GIMP is a font with a 8x14 box. As the simple font cannot have pixels
+jutting out of the main box, some glyphs have been adjusted. Also, some
+glyphs cannot be rendered adjacent to each other due to aliasing.
+Background colour is black, foreground colour is yellow. Hinting and
+aliasing on.
+
+First saved as XCF, then as a 24-bit BMP. 24-bit BMP is indexed to 255
+colours, then saved as a BMP with RLE. In order to get the dialog with
+RLE, use "Save as".
+
+

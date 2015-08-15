@@ -14,7 +14,8 @@ LOCAL_CPP_EXTENSION := .cpp
 LOCAL_SRC_FILES := 
 LOCAL_SRC_FILES += ../sdl/sdl_main.c
 #LOCAL_SRC_FILES += graywin.c
-LOCAL_SRC_FILES += ../LuaSDL-0.3.4/src/luasdl.c
+#LOCAL_SRC_FILES += ../LuaSDL-0.3.4/src/luasdl.c
+LOCAL_SRC_FILES += luasdl.c
 
 LOCAL_STATIC_LIBRARIES := luasdl lua sge sdl_mixer sdl_image sdl_ttf sdl
 # LOCAL_SHARED_LIBRARIES := sge sdl_mixer sdl_image sdl_ttf sdl

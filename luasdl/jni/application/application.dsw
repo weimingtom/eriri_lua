@@ -12,12 +12,6 @@ Package=<5>
 Package=<4>
 {{{
     Begin Project Dependency
-    Project_Dep_Name ruby
-    End Project Dependency
-    Begin Project Dependency
-    Project_Dep_Name rubysdl
-    End Project Dependency
-    Begin Project Dependency
     Project_Dep_Name sdl
     End Project Dependency
     Begin Project Dependency
@@ -63,10 +57,13 @@ Package=<4>
     Project_Dep_Name sdl_mixer
     End Project Dependency
     Begin Project Dependency
-    Project_Dep_Name ruby
+    Project_Dep_Name lua
     End Project Dependency
     Begin Project Dependency
-    Project_Dep_Name rubysdl
+    Project_Dep_Name luasdl
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name tolua
     End Project Dependency
 }}}
 

@@ -42,7 +42,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /MT /W3 /GX /O2 /I "..\sdl\include" /I "..\ruby-1.8.4" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /D "NO_STDIO_REDIRECT" /FD /c
+# ADD CPP /nologo /MT /W3 /GX /O2 /I "..\sdl\include" /I "..\ruby-1.8.4" /I "../sdl/include" /I "../lua-5.1.4/src" /I "../tolua++-1.0.92/include" /I "../LuaSDL-0.3.4/src" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /D "NO_STDIO_REDIRECT" /FD /c
 # SUBTRACT CPP /YX
 # ADD BASE RSC /l 0x804 /d "NDEBUG"
 # ADD RSC /l 0x804 /d "NDEBUG"
@@ -67,7 +67,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\sdl\include" /I "..\ruby-1.8.4" /I "../sdl/include" /I "../lua-5.1.4/src" /I "../tolua++-1.0.92/include" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /D "NO_STDIO_REDIRECT" /FR /FD /GZ /c
+# ADD CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\sdl\include" /I "..\ruby-1.8.4" /I "../sdl/include" /I "../lua-5.1.4/src" /I "../tolua++-1.0.92/include" /I "../LuaSDL-0.3.4/src" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /D "NO_STDIO_REDIRECT" /FR /FD /GZ /c
 # SUBTRACT CPP /YX
 # ADD BASE RSC /l 0x804 /d "_DEBUG"
 # ADD RSC /l 0x804 /d "_DEBUG"
@@ -87,45 +87,21 @@ LINK32=link.exe
 # Begin Source File
 
 SOURCE=.\graywin.c
-
-!IF  "$(CFG)" == "appconsole - Win32 Release"
-
-!ELSEIF  "$(CFG)" == "appconsole - Win32 Debug"
-
 # PROP Exclude_From_Build 1
-
-!ENDIF 
-
 # End Source File
 # Begin Source File
 
 SOURCE=.\lua.c
-
-!IF  "$(CFG)" == "appconsole - Win32 Release"
-
-!ELSEIF  "$(CFG)" == "appconsole - Win32 Debug"
-
 # PROP Exclude_From_Build 1
-
-!ENDIF 
-
 # End Source File
 # Begin Source File
 
-SOURCE="..\LuaSDL-0.3.4\src\luasdl.c"
+SOURCE=.\luasdl.c
 # End Source File
 # Begin Source File
 
 SOURCE=.\main.c
-
-!IF  "$(CFG)" == "appconsole - Win32 Release"
-
-!ELSEIF  "$(CFG)" == "appconsole - Win32 Debug"
-
 # PROP Exclude_From_Build 1
-
-!ENDIF 
-
 # End Source File
 # Begin Source File
 

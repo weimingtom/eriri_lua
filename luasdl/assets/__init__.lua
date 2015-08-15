@@ -31,10 +31,7 @@ if not screen then
 else
 
   if not MiniFont_New then
-	MiniFont_New = loadfile(SDL.LuaSDL_DirCwd.."minifont.lua")
-  end
-  if not MiniFont_New then
-    MiniFont_New = loadfile(SDL.LuaSDL_DirExe.."minifont.lua")
+	MiniFont_New = loadfile("minifont.lua")
   end
   local MiniFont = MiniFont_New()
   MiniFont:SetSurface(screen)

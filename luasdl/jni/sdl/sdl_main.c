@@ -5,7 +5,7 @@
 #include <android/log.h>
 #include "SDL_thread.h"
 #include "SDL_main.h"
-//#include <ruby.h>
+#include <lua.h>
 #include <string.h>
 
 /* JNI-C wrapper stuff */
@@ -51,7 +51,7 @@ JAVA_EXPORT_NAME(DemoRenderer_nativeInitJavaCallbacks)(env, thiz);
 	SDL_Android_Init(env, cls);
 	
 	//FIXME: Modified by weimingtom
-	//ruby_init_jni(env, thiz);
+	lua_init_jni(env, thiz);
 
 	SDL_main( argc, argv );
 };

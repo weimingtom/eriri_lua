@@ -758,6 +758,9 @@ union luai_Cast { double l_d; long l_l; };
 */
 
 
+/*FIXME: added */
+#define LUA_MEMORY_FILE_PATH "../../assets"
+
 
 #endif
 

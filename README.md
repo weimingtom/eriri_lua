@@ -2,6 +2,7 @@
 Porting Lua 5.1.4 and LuaSDL to Android JNI
 
 ## History:  
+2015-08-15: Running on Android successfully, only testing loading script __init__.lua via memory, content from jni).   
 2015-08-08: Built with VC6 and NDK, only running on VC6.  
 
 ## References:  

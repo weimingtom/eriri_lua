@@ -12,6 +12,9 @@
 #include <stdarg.h>
 #include <stddef.h>
 
+#if defined ANDROID
+#include <jni.h>
+#endif
 
 #include "luaconf.h"
 
@@ -384,5 +387,10 @@ struct lua_Debug {
 * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************************************************************/
 
+#if defined ANDROID
+void lua_init_jni(JNIEnv *, jobject);
+int lua_jni_callback_isfileexist(const char *fname);
+char *lua_jni_callback_readfile(const char* fname);
+#endif
 
 #endif

@@ -33,6 +33,314 @@
 					lua_gettop(L) + (i) + 1)
 
 
+
+
+
+#if defined ANDROID
+
+#include <jni.h>
+#include <stdlib.h>
+#include <android/log.h>
+
+jmethodID lua_jni_methodid_log = NULL;
+jmethodID lua_jni_methodid_readfile = NULL;
+jmethodID lua_jni_methodid_isfileexist = NULL;
+JNIEnv * lua_jni_env = NULL;
+jobject lua_jni_obj = NULL;
+
+int lua_jni_callback_isfileexist(const char* str)
+{
+    jclass stringClass;
+    jmethodID cid;
+    jcharArray elemArr;
+    jstring result;
+    jchar *chars = NULL;
+    jint len;
+    int i;
+    JNIEnv * env;
+    jobject obj;
+    int ret;
+
+    if (lua_jni_env != NULL && lua_jni_obj != NULL)
+    {
+    	env = lua_jni_env;
+    	obj = lua_jni_obj;
+		len = strlen(str);
+		chars = (jchar *) malloc(len * sizeof(jchar));
+		for (i = 0; i < len; i++)
+		{
+			chars[i] = str[i];
+		}
+
+		stringClass = (*env)->FindClass(env, "java/lang/String");
+		if (stringClass == NULL)
+		{
+			return 0;
+		}
+
+		cid = (*env)->GetMethodID(env, stringClass, "<init>", "([C)V");
+		if (cid == NULL)
+		{
+			return 0;
+		}
+
+		elemArr = (*env)->NewCharArray(env, len);
+		if (elemArr == NULL)
+		{
+			return 0;
+		}
+
+		(*env)->SetCharArrayRegion(env, elemArr, 0, len, chars);
+		result = (*env)->NewObject(env, stringClass, cid, elemArr);
+		(*env)->DeleteLocalRef(env, elemArr);
+
+		if (lua_jni_methodid_isfileexist != NULL)
+		{
+			ret = (*env)->CallIntMethod(env, obj, lua_jni_methodid_isfileexist, result);
+		}
+		(*env)->DeleteLocalRef(env, result);
+		(*env)->DeleteLocalRef(env, stringClass);
+
+		if (chars != NULL)
+		{
+			free(chars);
+			chars = NULL;
+		}
+	    //__android_log_print(ANDROID_LOG_INFO, "lauxlib.c", "[%s:%d %s]%s %d", __FILE__, __LINE__, __FUNCTION__, "lua_jni_callback_isfileexist return", ret);
+		return ret;
+    }
+    return 0;
+}
+
+char *lua_jni_callback_readfile(const char* str)
+{
+    jclass stringClass;
+    jmethodID cid;
+    jcharArray elemArr;
+    jstring result;
+    jchar *chars = NULL;
+    jint len;
+    int i;
+    JNIEnv * env;
+    jobject obj;
+    jstring jstr;
+	char *output;
+	int size;
+
+    //__android_log_print(ANDROID_LOG_INFO, "luaxlib.c", "[%s:%d %s]%s", __FILE__, __LINE__, __FUNCTION__, "lua_jni_callback_readfile 1");
+
+    if (lua_jni_env != NULL && lua_jni_obj != NULL)
+    {
+    	env = lua_jni_env;
+    	obj = lua_jni_obj;
+		len = strlen(str);
+		chars = (jchar *) malloc(len * sizeof(jchar));
+		for (i = 0; i < len; i++)
+		{
+			chars[i] = str[i];
+		}
+
+		stringClass = (*env)->FindClass(env, "java/lang/String");
+		if (stringClass == NULL)
+		{
+			return NULL;
+		}
+
+		cid = (*env)->GetMethodID(env, stringClass, "<init>", "([C)V");
+		if (cid == NULL)
+		{
+			return NULL;
+		}
+
+		elemArr = (*env)->NewCharArray(env, len);
+		if (elemArr == NULL)
+		{
+			return NULL;
+		}
+
+		(*env)->SetCharArrayRegion(env, elemArr, 0, len, chars);
+		result = (*env)->NewObject(env, stringClass, cid, elemArr);
+		(*env)->DeleteLocalRef(env, elemArr);
+
+		if (lua_jni_methodid_readfile != NULL)
+		{
+			const char *str;
+
+			jstr = (*env)->CallObjectMethod(env, obj, lua_jni_methodid_readfile, result);
+			//__android_log_print(ANDROID_LOG_INFO, "lauxlib.c", "[%s:%d %s]%s", __FILE__, __LINE__, __FUNCTION__, "lua_jni_callback_readfile 2");
+		    str = (*env)->GetStringUTFChars(env, jstr, 0);
+		    if (str == NULL) {
+		        return NULL;
+		    }
+		    //__android_log_print(ANDROID_LOG_INFO, "lauxlib.c", "[%s:%d %s]%s", __FILE__, __LINE__, __FUNCTION__, "lua_jni_callback_readfile 3");
+		    size = strlen(str) + 1;
+			output = (char *)calloc(size, 1);
+			strcpy(output, str);
+		    (*env)->ReleaseStringUTFChars(env, jstr, str);
+		}
+		(*env)->DeleteLocalRef(env, result);
+		(*env)->DeleteLocalRef(env, stringClass);
+
+		if (chars != NULL)
+		{
+			free(chars);
+			chars = NULL;
+		}
+		return output;
+    }
+	return NULL;
+}
+
+void lua_jni_callback_log(const char* str)
+{
+    jclass stringClass;
+    jmethodID cid;
+    jcharArray elemArr;
+    jstring result;
+    jchar *chars = NULL;
+    jint len;
+    int i;
+    JNIEnv * env;
+    jobject obj;
+
+    if (lua_jni_env != NULL && lua_jni_obj != NULL)
+    {
+    	env = lua_jni_env;
+    	obj = lua_jni_obj;
+		len = strlen(str);
+		chars = (jchar *) malloc(len * sizeof(jchar));
+		for (i = 0; i < len; i++)
+		{
+			chars[i] = str[i];
+		}
+
+		stringClass = (*env)->FindClass(env, "java/lang/String");
+		if (stringClass == NULL)
+		{
+			return ;
+		}
+
+		cid = (*env)->GetMethodID(env, stringClass, "<init>", "([C)V");
+		if (cid == NULL)
+		{
+			return ;
+		}
+
+		elemArr = (*env)->NewCharArray(env, len);
+		if (elemArr == NULL)
+		{
+			return ;
+		}
+
+		(*env)->SetCharArrayRegion(env, elemArr, 0, len, chars);
+		result = (*env)->NewObject(env, stringClass, cid, elemArr);
+		(*env)->DeleteLocalRef(env, elemArr);
+
+		if (lua_jni_methodid_log != NULL)
+		{
+			(*env)->CallVoidMethod(env, obj, lua_jni_methodid_log, result);
+		}
+		(*env)->DeleteLocalRef(env, result);
+		(*env)->DeleteLocalRef(env, stringClass);
+
+		if (chars != NULL)
+		{
+			free(chars);
+			chars = NULL;
+		}
+    }
+}
+
+void lua_init_jni(JNIEnv * env, jobject obj)
+{
+	jclass cls;
+	int argc;
+
+	/*
+	 * boolean Z
+	 * byte	B
+	 * char C
+	 * short S
+	 * int I
+	 * long	J
+	 * float F
+	 * double D
+	 * void	V
+	 * Object Ljava/lang/String;
+	 * Array [I [Ljava/lang/String;
+	 *
+	 * cd bin/classes
+	 * javap -s -private com.iteye.weimingtom.luajni.LuaJNI
+	 */
+	cls = (*env)->GetObjectClass(env, obj);
+	lua_jni_methodid_log = (*env)->GetMethodID(env, cls, "log", "(Ljava/lang/String;)V");
+	lua_jni_methodid_readfile = (*env)->GetMethodID(env, cls, "readfile", "(Ljava/lang/String;)Ljava/lang/String;");
+	lua_jni_methodid_isfileexist = (*env)->GetMethodID(env, cls, "isfileexist", "(Ljava/lang/String;)I");
+	lua_jni_env = env;
+	lua_jni_obj = obj;
+}
+
+
+#endif
+
+
+#ifdef LUA_MEMORY_FILE_PATH
+int lua_isfileexist(const char *fname)
+{
+	char real_path[1024] = {0};
+	FILE *fp = NULL;
+
+	if (fname == NULL || *fname == '\0') {
+		return 0;
+	}
+	sprintf(real_path, "%s/%s", LUA_MEMORY_FILE_PATH, fname);
+	fp = fopen(real_path, "r");
+	if (fp == NULL) {
+		return 0;
+	}
+	fclose(fp);
+
+	return 1;
+}
+
+static long fgetlength(FILE *stream)   
+{   
+    long   filesize=0;   
+    long   oldseek=ftell(stream);   
+    fseek(stream, 0L, SEEK_END);   
+    filesize=ftell(stream);   
+    fseek(stream, oldseek, 0);   
+    return filesize;   
+}
+
+char *lua_readfile(const char* fname)
+{
+	char real_path[1024] = {0};
+	FILE *fp = NULL;
+	long size = 0;
+	char *output = NULL;
+
+	if (fname == NULL || *fname == '\0') {
+		return NULL;
+	}
+	sprintf(real_path, "%s/%s", LUA_MEMORY_FILE_PATH, fname);
+	fp = fopen(real_path, "r");
+	if (fp == NULL) {
+		return NULL;
+	}
+	size = fgetlength(fp) + 1;
+	output = (char *)calloc(size, 1);
+	fread(output, size, 1, fp);
+	fclose(fp);
+
+	return output;
+}
+#endif
+
+
+
+
+
 /*
 ** {======================================================
 ** Error-report functions
@@ -523,6 +831,13 @@ typedef struct LoadF {
   int extraline;
   FILE *f;
   char buff[LUAL_BUFFERSIZE];
+
+  //for memory file
+  //FIXME: added
+  const char *fname;
+  char *file_content;
+  int fsize;
+  int fpos;
 } LoadF;
 
 
@@ -536,6 +851,40 @@ static const char *getF (lua_State *L, void *ud, size_t *size) {
   }
   if (feof(lf->f)) return NULL;
   *size = fread(lf->buff, 1, sizeof(lf->buff), lf->f);
+  return (*size > 0) ? lf->buff : NULL;
+}
+
+/**
+FIXME:
+The memory file implement of getF(), 
+Notice that this function will be called multitime 
+if file length > LUAL_BUFFERSIZE
+ */
+static const char *getFMemory (lua_State *L, void *ud, size_t *size) {
+  LoadF *lf = (LoadF *)ud;
+  (void)L;
+  if (lf->extraline) {
+    lf->extraline = 0;
+    *size = 1;
+    return "\n";
+  }
+  //read file content from memory
+  if (lf->fsize - lf->fpos > sizeof(lf->buff))
+  {
+	  *size = sizeof(lf->buff); //== LUAL_BUFFERSIZE
+	  if (*size > 0) {
+		 memcpy(lf->buff, lf->file_content + lf->fpos, *size);
+	  }
+	  lf->fpos += *size;
+  }
+  else
+  {
+	  *size = lf->fsize - lf->fpos;
+	  if (*size > 0) {
+		 memcpy(lf->buff, lf->file_content + lf->fpos, *size);
+	  }
+	  lf->fpos += *size;
+  }
   return (*size > 0) ? lf->buff : NULL;
 }
 
@@ -554,6 +903,7 @@ LUALIB_API int luaL_loadfile (lua_State *L, const char *filename) {
   int status, readstatus;
   int c;
   int fnameindex = lua_gettop(L) + 1;  /* index of filename on the stack */
+  int is_memory = 0;
   lf.extraline = 0;
   if (filename == NULL) {
     lua_pushliteral(L, "=stdin");
@@ -561,29 +911,68 @@ LUALIB_API int luaL_loadfile (lua_State *L, const char *filename) {
   }
   else {
     lua_pushfstring(L, "@%s", filename);
-    lf.f = fopen(filename, "r");
-    if (lf.f == NULL) return errfile(L, "open", fnameindex);
+#if defined ANDROID
+	//if (strcmp(fname, "fib.rb")==0) {
+	if (lua_jni_callback_isfileexist(filename) == 1) {
+    	is_memory = 1;
+	} else
+#elif defined(LUA_MEMORY_FILE_PATH)
+	if (lua_isfileexist(filename) == 1) {
+		is_memory = 1;
+	}
+#endif
+	if (is_memory == 0)
+	{
+		lf.f = fopen(filename, "r");
+		if (lf.f == NULL) return errfile(L, "open", fnameindex);
+	}
   }
-  c = getc(lf.f);
-  if (c == '#') {  /* Unix exec. file? */
-    lf.extraline = 1;
-    while ((c = getc(lf.f)) != EOF && c != '\n') ;  /* skip first line */
-    if (c == '\n') c = getc(lf.f);
+  if (is_memory == 0)
+  {
+	  c = getc(lf.f);
+	  if (c == '#') {  /* Unix exec. file? */
+		lf.extraline = 1;
+		while ((c = getc(lf.f)) != EOF && c != '\n') ;  /* skip first line */
+		if (c == '\n') c = getc(lf.f);
+	  }
+	  if (c == LUA_SIGNATURE[0] && filename) {  /* binary file? */
+		lf.f = freopen(filename, "rb", lf.f);  /* reopen in binary mode */
+		if (lf.f == NULL) return errfile(L, "reopen", fnameindex);
+		/* skip eventual `#!...' */
+	   while ((c = getc(lf.f)) != EOF && c != LUA_SIGNATURE[0]) ;
+		lf.extraline = 0;
+	  }
+	  ungetc(c, lf.f);
+	  status = lua_load(L, getF, &lf, lua_tostring(L, -1));
+	  readstatus = ferror(lf.f);
+	  if (filename) fclose(lf.f);  /* close file (even in case of errors) */
+	  if (readstatus) {
+		lua_settop(L, fnameindex);  /* ignore results from `lua_load' */
+		return errfile(L, "read", fnameindex);
+	  }
   }
-  if (c == LUA_SIGNATURE[0] && filename) {  /* binary file? */
-    lf.f = freopen(filename, "rb", lf.f);  /* reopen in binary mode */
-    if (lf.f == NULL) return errfile(L, "reopen", fnameindex);
-    /* skip eventual `#!...' */
-   while ((c = getc(lf.f)) != EOF && c != LUA_SIGNATURE[0]) ;
-    lf.extraline = 0;
-  }
-  ungetc(c, lf.f);
-  status = lua_load(L, getF, &lf, lua_tostring(L, -1));
-  readstatus = ferror(lf.f);
-  if (filename) fclose(lf.f);  /* close file (even in case of errors) */
-  if (readstatus) {
-    lua_settop(L, fnameindex);  /* ignore results from `lua_load' */
-    return errfile(L, "read", fnameindex);
+  else
+  {
+	  /* FIXME: memory file getc and ungetc, not implemented for Android */
+#if defined ANDROID
+		int buffersize = LUAL_BUFFERSIZE - 1;
+		lf.fname = filename;
+		lf.file_content = lua_jni_callback_readfile(lf.fname);
+		lf.fsize = strlen(lf.file_content);
+		lf.fpos = 0;
+		status = lua_load(L, getFMemory, &lf, lua_tostring(L, -1));
+		free(lf.file_content);
+		lf.file_content = NULL;
+#elif defined(LUA_MEMORY_FILE_PATH)
+		int buffersize = LUAL_BUFFERSIZE - 1;
+		lf.fname = filename;
+		lf.file_content = lua_readfile(lf.fname);
+		lf.fsize = strlen(lf.file_content);
+		lf.fpos = 0;
+		status = lua_load(L, getFMemory, &lf, lua_tostring(L, -1));
+		free(lf.file_content);
+		lf.file_content = NULL;
+#endif
   }
   lua_remove(L, fnameindex);
   return status;
